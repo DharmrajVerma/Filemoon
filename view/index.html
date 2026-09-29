@@ -12,15 +12,18 @@
     rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
   />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.css">
+  <script src="https://unpkg.com/axios@1.13.2/dist/axios.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.js"></script>
 </head>
 <body>
     <div class="bg-gray-200 min-h-screen flex justify-center items-center animate__animated animate__fadeIn  ">
         <div class = "p-8 w-[420px] bg-white rounded-xl flex flex-col items-center gap-8 animate__animated animate__pulse ">
             <div class="flex items-center gap-2">
                 <i class="ri-contrast-2-fill text-5xl text-violet-700"></i>
-                <h1 class="text-3xl font-semibold">Filemoon</h1>
+                <h1 class="text-3xl font    -semibold">Filemoon</h1>
             </div>
-            <form class="w-full space-y-6">
+            <form class="w-full space-y-6"  onsubmit="login(event)">
                <div class space-y-1>
                     <label class=" text-gray-500 text-[17px] block">Email</label>
                     <input
@@ -49,5 +52,6 @@
             </div>
         </div>
     </div>
+    <script src="./js/login.js"></script>
 </body>
 </html>

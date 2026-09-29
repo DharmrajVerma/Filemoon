@@ -35,7 +35,7 @@ app.use(express.json())
 app.use(express.urlencoded({extended: false}))
 app.use(express.static("view"))
 app.use(cors({
-    origin:'http://127.0.0.1:5500'
+    origin:'*'
 }))
 
 app.post("/signup",signup)
