@@ -9,3 +9,15 @@ const toggleDrawer = () =>{
     }
 
 }
+const uploadFile = async (e) =>{
+   try{
+        e.preventDefault()
+        const form = e.targt
+        const formData = new FormData(form)
+        const {data} = await axios.post("http://localhost:8080/file", formData)
+        console.log(data)
+   }
+   catch(err){
+    console.log(err)
+   }
+}

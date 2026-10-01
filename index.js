@@ -28,6 +28,7 @@ const { createFile, deleteFiles, fetchFiles, downloadFile } = require('./control
 const { populate } = require('./model/user.model')
 const { fetchDashboard } = require('./controller/dashboard.controller')
 const { compareSync } = require('bcrypt')
+const { verifyToken } = require('./controller/token.controller')
 const app = express()
 app.listen(process.env.PORT || 8080)
 
@@ -45,3 +46,4 @@ app.get('/file',fetchFiles)
 app.delete("/file/:id", deleteFiles)
 app.get("/file/download/:id", downloadFile)
 app.get("/dashboard",fetchDashboard)
+app.post("/token/verify",verifyToken)

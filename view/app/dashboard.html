@@ -12,7 +12,11 @@
     rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
   />
+ 
+  <script src="https://unpkg.com/axios@1.13.2/dist/axios.min.js"></script>
+  
   <script src="../js/session.js"></script>
+ 
 </head>
 <body>
     <div class="bg-gray-100 h-screen">
@@ -43,7 +47,7 @@
                         <label>History</label>
                     </button>
                 </a>
-                <button class="w-full bg-rose-400 text-white py-2 rounded hover:bg-rose-600">
+                <button onclick= logout() class="w-full bg-rose-400 text-white py-2 rounded hover:bg-rose-600">
                     <i class="ri-logout-circle-r-line"></i>
                     <label>Logout</label>
                 </button>
@@ -56,7 +60,7 @@
                     <h1 class="text-2xl font-semibold">Filemoon</h1>
                 </div>
                 <div class="space-x-2">
-                    <button onclick="toggleSidebar()" class="bg-gray-100 px-3 py-2 rounded hover:bg-gray-200">
+                    <button onclick="logout()" class="bg-gray-100 px-3 py-2 rounded hover:bg-gray-200">
                         <i class="ri-logout-circle-r-line"></i>
                     </button>
                     <button onclick="toggleSidebar()" class="bg-gray-100 px-3 py-2 rounded hover:bg-gray-200">
