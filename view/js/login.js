@@ -5,7 +5,7 @@ const toast = new Notyf({
 const checkSession = async () =>{
     const session = await getSession()
     if (session){
-        location.href ="app/dashboard.html"
+        location.href ="/dashboard"
     }
 }
 checkSession()
@@ -24,7 +24,7 @@ const login = async (e) =>{
         toast.success(data.message)
         localStorage.setItem("authToken", data.token)
         setTimeout(()=>{
-            location.href = "app/dashboard.html"
+            location.href = "/dashboard"
         },2000)
     }
     catch(err){

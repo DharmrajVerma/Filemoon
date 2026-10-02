@@ -4,7 +4,7 @@ const toast = new Notyf({
 const checkSession = async () =>{
     const session = await getSession()
     if (session){
-        location.href ="app/dashboard.html"
+        location.href ="/dashboard"
     }
 }
 const signup  = async (e) =>{
@@ -24,7 +24,7 @@ const signup  = async (e) =>{
         form.reset()
         toast.success(data.message)
         setTimeout(() =>{
-            location.href = "index.html"
+            location.href = "/login"
         },2000)
    }
    catch(err){

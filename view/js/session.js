@@ -17,7 +17,7 @@ catch(err){
 }
 const logout = () =>{
    localStorage.clear()
-   location.href= "../index.html"
+   location.href= "/login"
 }
 
 

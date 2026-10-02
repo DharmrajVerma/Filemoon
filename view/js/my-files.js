@@ -12,12 +12,17 @@ const toggleDrawer = () =>{
 const uploadFile = async (e) =>{
    try{
         e.preventDefault()
-        const form = e.targt
+        
+        const form = e.target
         const formData = new FormData(form)
         const {data} = await axios.post("http://localhost:8080/file", formData)
         console.log(data)
    }
-   catch(err){
-    console.log(err)
+  
+    catch (err) {
+        console.log("Status:", err.response?.status)
+        console.log("Backend response:", err.response?.data)
+        console.log("Error:", err.message)
+    
    }
 }
