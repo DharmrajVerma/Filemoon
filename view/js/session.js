@@ -1,3 +1,4 @@
+axios.defaults.baseURL = SERVER
 const getSession = async() =>{
    try{
     const session = localStorage.getItem("authToken")
@@ -8,7 +9,7 @@ const getSession = async() =>{
     const payload = {
     token: session
 }
-   const {data} = await axios.post("http://localhost:8080/token/verify",payload)
+   const {data} = await axios.post("/api/token/verify",payload)
    return data
 }
 catch(err){

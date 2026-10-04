@@ -1,3 +1,4 @@
+axios.defaults.baseURL = SERVER
 const toast = new Notyf({
     position: {x: 'center', y: 'top'}
 })
@@ -20,7 +21,7 @@ const login = async (e) =>{
             email: elements.email.value,
             password: elements.password.value
         }
-        const {data} = await axios.post("http://localhost:8080/login", payload)
+        const {data} = await axios.post("/api/login", payload)
         toast.success(data.message)
         localStorage.setItem("authToken", data.token)
         setTimeout(()=>{

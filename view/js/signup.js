@@ -1,3 +1,4 @@
+axios.defaults.baseURL= SERVER
 const toast = new Notyf({
     position: {x: 'center', y: 'top'} 
 })
@@ -20,7 +21,7 @@ const signup  = async (e) =>{
             password: elements.password.value
     }
    
-        const {data} = await axios.post('http://localhost:8080/signup', payload)
+        const {data} = await axios.post('/api/signup', payload)
         form.reset()
         toast.success(data.message)
         setTimeout(() =>{
