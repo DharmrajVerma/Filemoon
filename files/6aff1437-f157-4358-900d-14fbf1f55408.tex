@@ -1,0 +1,169 @@
+
+\documentclass[10pt,A4,english]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[USenglish]{isodate}
+\usepackage{fancyhdr}
+\usepackage{enumitem}
+\usepackage[english]{babel}
+\usepackage{pdfpages}
+\usepackage{changepage}
+\usepackage[default]{raleway}
+\renewcommand*\familydefault{\sfdefault}
+\usepackage[T1]{fontenc}
+\usepackage{moresize}
+\usepackage{fontawesome}
+\usepackage{paracol}
+\usepackage{tikzpagenodes}
+\usetikzlibrary{calc}
+\usepackage{lmodern}
+\usepackage{multicol}
+\usepackage{atbegshi}
+\usepackage[a4paper]{geometry}
+\geometry{top=1cm,bottom=1cm,left=1cm,right=1cm}
+\pagestyle{empty}
+\setlength{\parindent}{0mm}
+\usepackage{array}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{ragged2e}
+\usetikzlibrary{shapes,backgrounds,mindmap,trees}
+\usepackage{transparent}
+\usepackage{xcolor}
+\definecolor{maincol}{RGB}{64,64,64}
+\definecolor{darkcol}{RGB}{45,45,45}
+\definecolor{lightcol}{RGB}{245,245,245}
+\definecolor{accentcol}{RGB}{59,77,97}
+\usepackage[hidelinks]{hyperref}
+
+\newcommand{\mpwidth}{\linewidth-\fboxsep-\fboxsep}
+\newcommand{\icon}[3]{\makebox(#2,#2){\textcolor{maincol}{\csname fa#1\endcsname}}}
+\newcommand{\icontext}[4]{\vcenteredhbox{\icon{#1}{#2}{#3}}\hspace{2pt}\parbox{0.9\mpwidth}{\textcolor{#4}{#3}}}
+\newcommand{\iconhref}[5]{\vcenteredhbox{\icon{#1}{#2}{#5}}\hspace{2pt}\href{#4}{\textcolor{#5}{#3}}}
+\newcommand{\iconemail}[5]{\vcenteredhbox{\icon{#1}{#2}{#5}}\hspace{2pt}\href{mailto:#4}{\textcolor{#5}{#3}}}
+
+\newcommand{\cvtext}[1]{\begin{tabular*}{1\mpwidth}{p{0.98\mpwidth}}\parbox{1\mpwidth}{#1}\end{tabular*}}
+\newcommand{\cvsection}[1]{\vspace{10pt}\cvtext{\textbf{\LARGE{\textcolor{darkcol}{#1}}}\\[-4pt]\textcolor{accentcol}{\rule{0.2\textwidth}{1.5pt}}\\}}
+\newcommand{\cvmetaevent}[4]{
+  \textcolor{maincol}{\cvtext{\textbf{#1}}}
+  \ifthenelse{\isempty{#2}}{}{\textcolor{black}{\cvtext{\textbf{#2}}}}
+  \ifthenelse{\isempty{#3}}{}{\cvtext{\textcolor{maincol}{#3}}}
+  \cvtext{#4}\\[8pt]
+}
+\newcommand{\cvevent}[4]{
+  \parbox{\mpwidth}{
+    \begin{tabular*}{1\mpwidth}{p{0.66\mpwidth} r}
+      \textcolor{black}{\textbf{#2}} &
+      \colorbox{accentcol}{\makebox[0.32\mpwidth]{\textcolor{white}{\textbf{#1}}}}\\
+      \textcolor{maincol}{#3}&\\
+    \end{tabular*}\\[5pt]
+    \cvtext{#4}
+  }\vspace{8pt}
+}
+\newcommand{\vcenteredhbox}[1]{\begingroup\setbox0=\hbox{#1}\parbox{\wd0}{\box0}\endgroup}
+
+\newcommand\Header[1]{%
+\begin{tikzpicture}[remember picture,overlay]
+\fill[accentcol]
+(current page.north west)--(current page.north east)--
+([yshift=50pt]current page.north east|-current page text area.north east)--
+([yshift=50pt,xshift=-3cm]current page.north|-current page text area.north)--
+([yshift=10pt,xshift=-5cm]current page.north|-current page text area.north)--
+([yshift=10pt]current page.north west|-current page text area.north west)--cycle;
+\node[font=\sffamily\bfseries\color{white},anchor=west,xshift=0.7cm,yshift=-0.32cm]
+at (current page.north west){\fontsize{12}{12}\selectfont{RESUME}};
+\end{tikzpicture}}
+
+\begin{document}
+
+\columnratio{0.31}
+\setlength{\columnsep}{2.2em}
+\setlength{\columnseprule}{4pt}
+\colseprulecolor{white}
+\AtBeginShipoutFirst{\Header{RESUME}}
+\AtBeginShipout{\AtBeginShipoutAddToBox{\Header{RESUME}}}
+
+\begin{paracol}{2}
+
+\begin{leftcolumn}
+
+\vspace{8pt}
+\fcolorbox{white}{white}{\begin{minipage}[c][1.5cm][c]{1\mpwidth}
+\LARGE{\textbf{\textcolor{maincol}{Dharmraj Verma}}}\\[2pt]
+\normalsize{\textcolor{maincol}{MERN / Full-Stack Developer}}
+\end{minipage}}\\[8pt]
+
+\cvsection{Contact}
+\icontext{MobilePhone}{16}{7905260208}{black}\\[6pt]
+\iconemail{Envelope}{16}{dharmrajverma184@gmail.com}{dharmrajverma184@gmail.com}{black}\\[6pt]
+\icontext{MapMarker}{16}{Shimla, Himachal Pradesh, India}{black}\\[6pt]
+
+\cvsection{Technical Skills}
+\cvtext{\textbf{Languages:} C, C++, JavaScript (ES6+), Python}\\[5pt]
+\cvtext{\textbf{Frontend:} HTML5, CSS3, React.js, Next.js, Tailwind CSS}\\[5pt]
+\cvtext{\textbf{Backend:} Node.js, Express.js, RESTful APIs, JWT, Nodemailer}\\[5pt]
+\cvtext{\textbf{Databases:} MongoDB, MongoDB Atlas, SQLite}\\[5pt]
+\cvtext{\textbf{Cloud:} Cloudinary, Multer}\\[5pt]
+\cvtext{\textbf{Payments:} Razorpay}\\[5pt]
+\cvtext{\textbf{Tools:} Git, GitHub, Postman, VS Code, Vercel, Netlify}\\[5pt]
+\cvtext{\textbf{CS Fundamentals:} DSA, OOP, DBMS, OS, Computer Networks}
+
+\cvsection{Certifications}
+\cvmetaevent{2024}{Data Structures and Algorithms}{PW Skills}{}
+\cvmetaevent{2025}{MERN Stack Development}{KnowledgeGate}{}
+
+\cvsection{Education}
+\cvmetaevent{2022--2026}{B.Tech in Information Technology}{University Institute of Information Technology, Shimla, Himachal Pradesh}{CGPA: 8.8/10}
+\cvmetaevent{2020--2021}{Class XII (CBSE) -- PCM}{Geeta International Public School, Padrauna, Uttar Pradesh}{82.83\%}
+
+\end{leftcolumn}
+
+\begin{rightcolumn}
+
+\vspace{8pt}
+{\Huge\textbf{\textcolor{accentcol}{Dharmraj Verma}}}\\[-2pt]
+{\Large\textcolor{darkcol}{MERN / Full-Stack Developer}}
+
+\cvsection{Profile}
+\cvtext{
+Full-Stack Developer with hands-on experience building web applications using React.js, Next.js, Node.js, Express.js, and MongoDB. Experienced in developing authentication systems, role-based access control, RESTful APIs, payment integration, cloud-based file storage, and responsive user interfaces. B.Tech in Information Technology graduate with a CGPA of 8.8/10, seeking an entry-level software development opportunity.
+}
+
+\cvsection{Projects}
+
+\cvevent{2025--2026}
+{Next.js E-Commerce Platform}
+{Next.js, React.js, Express.js, MongoDB, Tailwind CSS, JWT, Razorpay}
+{\begin{itemize}[leftmargin=*,itemsep=2pt,topsep=2pt]
+\item Developed a full-stack e-commerce platform with a responsive interface and end-to-end product and order management.
+\item Implemented JWT-based authentication, email verification, password reset, and role-based access control.
+\item Integrated the Razorpay Payment Gateway for online payment processing and order management.
+\item Built an Admin Dashboard for managing products, categories, users, orders, and inventory.
+\item Implemented product search, category filtering, shopping cart, wishlist, order history, and secure checkout functionality.
+\item Integrated Cloudinary for product image upload, cloud storage, and optimization.
+\item Developed RESTful APIs using Express.js and MongoDB and utilized Next.js dynamic routing and Server-Side Rendering (SSR).
+\end{itemize}}
+
+\cvevent{2026}
+{FileMoon -- Secure File Sharing Platform}
+{React.js, Node.js, Express.js, MongoDB, JWT, Multer, Cloudinary}
+{\begin{itemize}[leftmargin=*,itemsep=2pt,topsep=2pt]
+\item Developed a cloud-based file-sharing platform using the MERN stack with responsive user interfaces.
+\item Implemented JWT authentication, email verification, protected routes, and role-based authorization.
+\item Built file upload, download, preview, deletion, and sharing functionality using Multer and Cloudinary.
+\item Designed RESTful APIs for authentication, user management, and file operations using Express.js and MongoDB.
+\item Developed responsive React.js interfaces focused on usability and secure file management.
+\end{itemize}}
+
+\cvsection{Additional Information}
+\cvtext{
+\textbf{GitHub:} \href{https://github.com/}{GitHub}\\
+\textbf{LinkedIn:} \href{https://www.linkedin.com/}{LinkedIn}\\
+\textbf{LeetCode:} \href{https://leetcode.com/}{LeetCode}\\
+\textbf{Portfolio:} Portfolio
+}
+
+\end{rightcolumn}
+\end{paracol}
+
+\end{document}
