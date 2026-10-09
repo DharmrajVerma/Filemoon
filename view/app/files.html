@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.css">
   <script src="https://unpkg.com/axios@1.13.2/dist/axios.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.31.0/moment.min.js"></script>
   
 </head>
 <body>
@@ -75,18 +76,19 @@
                         <label >Add File</label>
                     </button>
                 </div>
-                <table class="w-full bg-white" id="files-table">
-                    <tr class="bg-slate-900 text-white text-left">
-                        <th class=" font-medium py-4 pl-6">FileName</th>
-                        <th class=" font-medium">Type</th>
-                        <th class=" font-medium">Size</th>
-                        <th class=" font-medium">Created</th>
-                        <th class=" font-medium">Action</th>
-                    </tr>
-                    
-                
+                <table class="w-full bg-white">
+                    <thead>
+                        <tr class="bg-slate-900 text-white text-left">
+                            <th class=" font-medium py-4 pl-6">FileName</th>
+                            <th class=" font-medium">Type</th>
+                            <th class=" font-medium">Size</th>
+                            <th class=" font-medium">Created</th>
+                            <th class=" font-medium">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="files-table">
 
-                    
+                    </tbody>  
                 </table>
             </div>
             

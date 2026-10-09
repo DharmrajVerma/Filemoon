@@ -45,6 +45,7 @@ const uploadFile = async (e) =>{
         progress.innerHTML= ''
         form.reset()
         toggleDrawer()
+        fetchFiles()
         
    }
   
@@ -62,24 +63,25 @@ const fetchFiles = async () => {
     try{
         const {data} = await axios.get('/api/file')
         const table = document.getElementById("files-table")
+        table.innerHTML = " "
         for(let file of data){
             console.log(file)
             const ui = `
             <tr class="text-gray-500 border-b border-gray-100">
-                        <td class="py-3 pl-6">${file.filename}</td>
-                        <td>${file.type}</td>
-                        <td>${getSize(file.size)}</td>
-                        <td>${file.updatedAt}</td>
+                        <td class="py-3 pl-6 capitalize">${file.filename}</td>
+                        <td class = "capitalize">${file.type}</td>
+                        <td>${getSize(file.size)} Mb</td>
+                        <td>${moment(file.createdAt).format("DD MMM YYYY hh:mm  A")}</td>
                         <td>
                             <div class="space-x-3">
-                                <button class="px-2 py-1 text-white  bg-rose-400 hover:bg-rose-600">
+                                <button class="px-2 py-1 text-white  bg-rose-400 hover:bg-rose-600 rounded" onclick = "deleteFile('${file._id}')">
                                     <i class="ri-delete-bin-4-line"></i>
                                 </button>
 
-                                <button class="px-2 py-1 text-white  bg-green-400 hover:bg-green-600">
+                                <button class="px-2 py-1 text-white  bg-green-400 hover:bg-green-600 rounded "  onclick = "downloadFile('${file._id}', '${file.filename}')">
                                     <i class="ri-download-line"></i>
                                 </button>
-                                <button class="px-2 py-1 text-white  bg-amber-400 hover:bg-amber-600">
+                                <button class="px-2 py-1 text-white  bg-amber-400 hover:bg-amber-600 rounded">
                                     <i class="ri-share-line"></i>
                                 </button>
 
@@ -95,3 +97,36 @@ const fetchFiles = async () => {
         toast.error(err.response ? err.response.data.message : err.message)
     }
 }
+
+const deleteFile = async (id) => {
+    try{
+        await axios.delete(`/api/file/${id}`)
+        toast.success("file Deleted")
+        fetchFiles()
+
+    }
+    catch(err){
+        toast.error(err.response ? err.response.data.message : err.message)
+    }
+}
+
+const  downloadFile = async (id,filename) =>{
+try{
+    const options = {
+        responseType: 'blob'
+    }
+    const{data} = await axios.get(`/api/file/download/${id}`, options)
+    const ext = data.type.split("/").pop()
+    const url = URL.createObjectURL(data)
+    const a = document.createElement("a")
+    a.href= url
+    a.download = `${filename}. ${ext}`
+    a.click()
+    a.remove()
+
+}
+catch(err){
+    toast.error(err.response ? err.response.data.message : err.message)
+}
+}
+
